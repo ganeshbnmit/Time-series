@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import pandas as pd
@@ -24,10 +18,6 @@ from sklearn.neighbors import KNeighborsRegressor
 from sktime.forecasting.naive import NaiveForecaster
 from sktime.performance_metrics.forecasting import mean_absolute_percentage_error as smape_loss
 from sktime.forecasting.arima import AutoARIMA
-
-
-# In[2]:
-
 
 class TimeSeriesAnalysis:
     def __init__(self, data):
@@ -122,9 +112,7 @@ class TimeSeriesAnalysis:
         plt.plot(self.y_test, label='Test')
         plt.show()
         
-    
-   
-        
+      
     def fit(self):
         self.y_train.fillna(0,inplace=True)
         model = auto_arima(self.y_train, trace=True,  error_action='ignore', suppress_warnings=True, stationary=True)
@@ -153,37 +141,15 @@ class TimeSeriesAnalysis:
         plt.show()
         
         
-    
-   
-  
-
-    
-             
-
-
-# In[3]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
 production_df =production.df
 production_df.columns = ['ds','y']
 production_df.tail(20)
 
 
-# In[4]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
 production.get_time_series('IPG2211A2N')
 production.fb_prophet()
-
-
-
-
-
-
-
-# In[5]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
@@ -192,35 +158,15 @@ ts_df = production.ts_df
 ts_df
 
 
-# In[6]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
 production.get_time_series('IPG2211A2N')
 production.stationarity_test()
 
-
-# In[7]:
-
-
 production_df.plot()
-
-
-# In[ ]:
-
-
-
-
-
-# In[8]:
-
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
 production.get_time_series('IPG2211A2N')
 production.get_summary_stats()
-
-
-# In[9]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
@@ -229,15 +175,9 @@ production.stationarity_test()
 production.kpss_results
 
 
-# In[10]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
 production.get_time_series('IPG2211A2N')
 production.visualize(line_plot = True, histogram = True, decompose = True)
-
-
-# In[11]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\Electric_Production.csv")
@@ -245,22 +185,3 @@ production.get_time_series('IPG2211A2N')
 production.train_test_split()
 production.fit()
 production.validate()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
