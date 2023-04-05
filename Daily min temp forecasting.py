@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import pandas as pd
@@ -26,28 +20,17 @@ from sktime.performance_metrics.forecasting import mean_absolute_percentage_erro
 from sktime.forecasting.arima import AutoARIMA
 from xgboost import XGBRegressor
 
-
-# In[152]:
-
-
 class TimeSeriesAnalysis:
     def __init__(self, data):
         self.df = pd.read_csv(data)
-        
-    #def change_columns(self):
-        #self.df.columns = ['ds','y']
-                     
-        
+              
     def get_time_series(self,target):
-    
         self.df['Date'] = pd.to_datetime(self.df['Date'])
         self.df.set_index('Date', inplace=True)
         #self.df=self.df.asfreq('M')
         self.ts_df = self.df[target]
         #self.timestamp = pd.Timestamp('production_df')
-        #self.timestamp.to_period(freq='M')
-        
-        
+        #self.timestamp.to_period(freq='M')  
     
     def get_summary_stats(self):
         print(f"Mean {self.ts_df}: ", self.ts_df.mean())
@@ -60,9 +43,7 @@ class TimeSeriesAnalysis:
         future_dates.tail()
         prediction=model.predict(future_dates)
         model.plot(prediction)
-        prediction.head()
-        
-       
+        prediction.head()  
         
     def visualize(self, line_plot, histogram, decompose):
         sns.set()
@@ -122,9 +103,7 @@ class TimeSeriesAnalysis:
         self.y_test = self.df[self.df.index > pd.to_datetime('1987-01')]
         plt.plot(self.y_train, label='Train')
         plt.plot(self.y_test, label='Test')
-        plt.show()
-        
-    
+        plt.show()    
    
         
     def fit(self):
@@ -153,40 +132,17 @@ class TimeSeriesAnalysis:
         plt.xticks(rotation=45)
         plt.legend(loc='upper left', fontsize=8)
         plt.show()
-        
-  
-    
-   
-  
-
-    
-             
-
-
-# In[153]:
-
+     
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
 production_df =production.df
 production_df.columns = ['ds','y']
 production_df.tail(1)
 
-
-# In[154]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
 production.get_time_series('Daily minimum temperatures')
 production.train_test_split()
 production.fb_prophet()
-
-
-
-
-
-
-
-# In[155]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
@@ -195,35 +151,15 @@ ts_df = production.ts_df
 ts_df
 
 
-# In[156]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
 production.get_time_series('Daily minimum temperatures')
 production.stationarity_test()
 
-
-# In[157]:
-
-
 production_df.plot()
-
-
-# In[ ]:
-
-
-
-
-
-# In[158]:
-
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
 production.get_time_series('Daily minimum temperatures')
 production.get_summary_stats()
-
-
-# In[160]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
@@ -232,15 +168,9 @@ production.stationarity_test()
 production.kpss_results
 
 
-# In[161]:
-
-
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
 production.get_time_series('Daily minimum temperatures')
 production.visualize(line_plot = True, histogram = True, decompose = True)
-
-
-# In[163]:
 
 
 production = TimeSeriesAnalysis(r"C:\Users\admin\Downloads\daily-minimum-temperatures-in-me.csv")
@@ -248,22 +178,3 @@ production.get_time_series('Daily minimum temperatures')
 production.train_test_split()
 production.fit()
 production.validate()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
