@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[94]:
-
-
 from sktime.datasets import load_airline
 from sktime.forecasting.base import ForecastingHorizon
 from sktime.forecasting.naive import NaiveForecaster
@@ -28,16 +22,6 @@ y = load_airline()
 #y = pd.read_csv(r"C:\Users\admin\Downloads\Electric_Production.csv")
 #y['DATE']=pd.to_datetime(y['DATE'],infer_datetime_format=True)
 #indexedy = y.set_index(['DATE'])
-
-
-# In[ ]:
-
-
-
-
-
-# In[97]:
-
 
 class TimeSeriesAnalysis:
     def forecast_naive(self,timeseries_data, horizon, seasonality_period):
@@ -87,43 +71,14 @@ class TimeSeriesAnalysis:
         plot_series(y_train, y_test, y_pred, labels=["y_train", "y_test", "y_pred"])
         print("Mean Absolute Percentage Error (MAPE):", mean_absolute_percentage_error(y_test, y_pred, symmetric=False))
 
-
-# In[98]:
-
-
 passengers=TimeSeriesAnalysis()
 passengers.forecast_arima_test(timeseries_data=y, test_size=36)
-
-
-# In[99]:
-
 
 passengers=TimeSeriesAnalysis()
 passengers.forecast_naive(timeseries_data=y, horizon=36, seasonality_period=12)
 
-
-# In[100]:
-
-
 passengers=TimeSeriesAnalysis()
 passengers.forecast_kneighbors_test(timeseries_data=y, test_size=36)
 
-
-# In[93]:
-
-
 passengers=TimeSeriesAnalysis()
 passengers.xgboost(timeseries_data=y, test_size=36)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
