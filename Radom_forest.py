@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import numpy as np
 import pandas as pd
@@ -29,10 +23,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.preprocessing import scale
 from sklearn.ensemble import RandomForestRegressor
-
-
-# In[2]:
-
 
 class TimeSeriesAnalysis:
     def Randomforest(self):
@@ -70,36 +60,6 @@ class TimeSeriesAnalysis:
         plt.plot(x_axis_nxt, y_pred, linewidth=2)
         plt.show()
         
-    
-   
-   
-  
-
-    
-             
-
-
-# In[3]:
-
-
 production = TimeSeriesAnalysis()
 #production.get_time_series('IPG2211A2N')
 production.Randomforest()
-
-
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
